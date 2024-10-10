@@ -1,0 +1,7 @@
+mutation TopUpAccount($amount: Float!, $description: String, $serviceLocalId: Float!, $account: String!, $email: String!, $currencyType: Float!) {
+    topUpAccount(input: {amount: $amount, description: $description, serviceLocalId: $serviceLocalId, account: $account, email: $email, currencyType: $currencyType}) {
+        linkPagePay
+        linkPagePayWithQRCode
+        eventId
+    }
+}

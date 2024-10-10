@@ -1,0 +1,566 @@
+// todo: избавится от :global
+.PayForm {
+  max-width: 635px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  gap: 16px;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(47, 47, 47, 1);
+
+  @media(max-width: 1280px) {
+    margin-bottom: 32px;
+    padding: 12px;
+  }
+
+  &__commission {
+    font-weight: 400;
+    line-height: 1.42857;
+
+    span {
+      background: #2A1E47;
+      color: #A786FF;
+      border-radius: 4px;
+      padding: 2px;
+      display: inline-block;
+      margin-left: 2px;
+    }
+  }
+
+  :global(.ant-input),
+  :global(.ant-input-wrapper) {
+    height: 100%;
+  }
+  :global(.ant-input-group-wrapper),
+  :global(.ant-input-number-group-wrapper) {
+    background: #0A0A0A;
+    border-color: #CC4A17;
+    transition: all .3s;
+
+    &:global(.active) {
+      border-color: transparent;
+    }
+    &.field__error {
+      border-color: #ff4d4f;
+    }
+    &:hover {
+      border-color: #ff5c1d;
+    }
+    :global(.ant-input),
+    :global(.ant-input-number-input){
+      all: unset;
+      width: 100%;
+      margin-top: 0;
+      height: 100%;
+      padding-top: 23px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+      opacity: 0;
+      font-size: 16px;
+      transition: all .5s;
+
+      @media(max-width: 1280px) {
+        padding-top: 16px;
+        font-size: 14px;
+      }
+      &:focus {
+        opacity: 1;
+      }
+      &:focus + :global(.ant-input-group-addon),
+      &:focus + :global(.ant-input-number-group-addon) {
+        top: 8px;
+        font-size: 14px;
+        color: #9A9BA2;
+
+        @media(max-width: 1280px) {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  :global(.ant-input-number-wrapper) {
+    height: 100%;
+  }
+  :global(.ant-input-number) {
+    background: none;
+    border: 0;
+    box-shadow: none;
+
+    :global(.ant-input-number-input-wrap) {
+      height: 100%;
+    }
+    &:focus,
+    &:hover {
+      box-shadow: none;
+      border: 0;
+    }
+  }
+  :global(.ant-input-number-focused) {
+    & + :global(.ant-input-number-group-addon) {
+      top: 15px;
+      font-size: 14px;
+      color: #9A9BA2;
+
+      @media(max-width: 1280px) {
+        font-size: 12px;
+      }
+    }
+  }
+  :global(.ant-input-number-group-wrapper) {
+    padding: 0;
+  }
+  :global(.ant-input-group-wrapper.active),
+  :global(.ant-input-number-group-wrapper.active){
+    :global(.ant-input-group-addon),
+    :global(.ant-input-number-group-addon) {
+      top: 8px;
+      font-size: 14px;
+      color: #9A9BA2;
+
+      @media(max-width: 1280px) {
+        font-size: 12px;
+      }
+    }
+    :global(.ant-input-number-group-addon){
+      top: 15px;
+    }
+    :global(.ant-input),
+    :global(.ant-input-number-input){
+      opacity: 1;
+    }
+  }
+  :global(.ant-input-group-addon),
+  :global(.ant-input-number-group-addon){
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    text-align: left;
+    border: 0;
+    line-height: 46px;
+    pointer-events: none;
+    transition: all .5s;
+    padding-left: 0;
+    font-size: 16px;
+
+    @media(max-width: 1280px) {
+      font-size: 14px;
+    }
+  }
+  :global(.ant-btn) {
+    background: #25262A;
+    padding: 12px;
+    height: 48px;
+    font-size: 16px;
+    box-shadow: none;
+    font-weight: 700;
+    border-radius: 12px;
+
+    &:disabled {
+      border: 0;
+      color: #fff;
+      background: #25262A;
+    }
+    &:not(:disabled) {
+      background: #FF5C1D;
+
+      &:hover {
+        background: #FF5C1D !important;
+        text-shadow: 0 0 8px #fff;
+      }
+    }
+  }
+  :global(.ant-checkbox-wrapper) {
+    color: #9A9BA2;
+
+    :global(.ant-checkbox-inner) {
+      border-radius: 4px;
+      border: 1px solid #9A9BA2;
+      background: none;
+      transition: all .3s;
+    }
+    &:hover {
+      :global(.ant-checkbox-inner) {
+        border-color: #FF5C1D;
+      }
+      :global(.ant-checkbox-checked) {
+        :global(.ant-checkbox-inner) {
+          border-color: #FF5C1D !important;
+          background-color: #FF5C1D !important;
+        }
+      }
+    }
+    :global(.ant-checkbox-checked) {
+      :global(.ant-checkbox-inner) {
+        border-color: #FF5C1D;
+        background: #FF5C1D;
+      }
+    }
+  }
+
+  .PayForm__InputWrap {
+    position: relative;
+
+    @media(max-width: 1280px) {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 8px;
+    }
+    :global(.ant-input-number-group-wrapper) {
+      padding-left: 12px;
+
+      @media(max-width: 1280px) {
+        :global(.ant-input-number-group-addon) {
+          top: 50%;
+        }
+        :global(.ant-input-number-focused) {
+          & + :global(.ant-input-number-group-addon) {
+            top: 12px;
+          }
+        }
+      }
+    }
+    :global(.ant-input-number-group-wrapper.active) {
+      :global(.ant-input-number-group-addon) {
+        @media(max-width: 1280px) {
+          top: 12px;
+        }
+      }
+    }
+  }
+  &__currencyItems {
+    position: absolute;
+    top: 50%;
+    right: 44px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid #343539;
+    border-radius: 8px;
+    height: 36px;
+    z-index: 2;
+
+    @media(max-width: 1280px) {
+      position: relative;
+      top: 0;
+      right: 0;
+      transform: translateY(0);
+      height: 40px;
+    }
+    @media(max-width: 768px) {
+      flex-wrap: wrap;
+      height: auto;
+    }
+  }
+  &__currencyItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    @media(max-width: 1280px) {
+      padding: 6px;
+      flex-grow: 1;
+      text-align: center;
+      justify-content: center;
+    }
+    &:hover {
+      background: #25262A;
+    }
+    &Active {
+      background: #25262A;
+    }
+  }
+  :global(.ant-typography-danger) {
+    @media(max-width: 1280px) {
+      font-size: 12px;
+    }
+  }
+
+  .iconQuesWrap {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: #343539;
+    z-index: 2;
+
+    &:hover {
+      background: #515257;
+    }
+  }
+  .iconQuesCurrency {
+    @media(max-width: 1280px) {
+      top: auto;
+      bottom: 24px;
+      transform: translateY(50%);
+    }
+  }
+  .iconQues {
+    color: #C5C6CD;
+  }
+}
+
+.saleCommission {
+  padding: 12px;
+  background: #0A0A0A;
+  border-radius: 12px;
+
+  &__title {
+    margin-bottom: 46px;
+    color: #9A9BA2;
+  }
+  &__line {
+    position: relative;
+    height: 2px;
+    background: #9A9BA2;
+    margin-bottom: 30px;
+  }
+  &__lineProgress {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, #ffe222 0%,#9cff72 19%,#f7f7f7 100%);
+    z-index: 2;
+    transition: all .5s;
+
+    &:not([style="width: 0%"]):before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      background: #9CFF72;
+    }
+  }
+  &__percentsItems {
+    display: flex;
+    position: absolute;
+    top: -38px;
+    left: 0;
+    width: 100%;
+  }
+  &__percentsItem {
+    display: flex;
+    flex-grow: 1;
+    width: 25%;
+
+    @media(max-width: 768px) {
+      font-size: 12px;
+    }
+    span {
+      color: #9CFF72;
+      padding: 4px 2px;
+      border-radius: 4px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #21281F;
+    }
+  }
+  &__percentsItemPopular {
+    span {
+      background: #6D35FF;
+      color: #fff;
+      position: relative;
+
+      &:before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: -8px;
+        right: -9px;
+        background: url("../../../public/images/icon-star.svg") no-repeat 50%;
+      }
+    }
+  }
+  &__priceItems {
+    display: flex;
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+  }
+  &__priceItem {
+    flex-grow: 1;
+    width: 25%;
+    position: relative;
+
+    @media(max-width: 768px) {
+      font-size: 12px;
+    }
+    &:before {
+      content: "";
+      height: 10px;
+      width: 2px;
+      position: absolute;
+      display: block;
+      top: -14px;
+      left: 0;
+      background: #9A9BA2;
+    }
+  }
+  &__priceItemLast {
+    text-align: right;
+
+    &:before {
+      left: auto;
+      right: 0;
+    }
+  }
+}
+
+.field {
+  width: 100%;
+  height: 64px;
+  padding: 8px 36px 8px 12px;
+  border: 1px solid black;
+  border-radius: 12px;
+  position: relative;
+
+  @media(max-width: 1280px) {
+    height: 48px;
+    padding: 4px 36px 4px 12px;
+  }
+}
+
+.fieldDescription {
+}
+
+.buttonSubmit {
+  width: 100%;
+  padding: 22px 30px;
+}
+
+.textAreaWrapper {
+  position: relative;
+
+  :global(.ant-input) {
+    border-color: #CC4A17;
+    transition: all .3s;
+    resize: none;
+    font-size: 16px;
+
+    &::placeholder {
+      color: #fff;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: #ff5c1d;
+      box-shadow: none;
+    }
+  }
+}
+
+.PayForm__descr {
+  color: #9A9BA2;
+  text-align: center;
+}
+
+.payMethods {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+
+  &__item {
+    width: 64px;
+    height: 40px;
+    border: 1px solid #25262A;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.PayForm__modal {
+  background: linear-gradient(135deg, #25262a 0%, #161417 100%);
+  border-radius: 20px;
+
+  @media(max-width: 374px) {
+    :global(.ant-modal-content) {
+      padding: 20px 10px;
+    }
+  }
+}
+
+.PayForm__modalTitle {
+  text-align: center;
+}
+
+.PayForm__modalTitleSec {
+  text-align: center;
+}
+
+.PayForm__modalImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 9px;
+}
+
+.PayForm__modalText {
+  text-align: center;
+}
+
+.PayForm__modalLink {
+  text-align: center;
+
+  &:global(.ant-typography) {
+    color: #FF5C1D;
+    display: inline-block;
+    margin: 0 auto;
+    line-height: 14px;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+      color: #FF5C1D;
+    }
+  }
+}
+.PayForm__modalCountriesList {
+  background: linear-gradient(180deg, #25262a 0%, #26262a 100%);
+  border-radius: 16px;
+  padding: 20px;
+  flex-grow: 1;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(47, 47, 47, 1);
+}
+
+.PayForm__modalCountriesListWrap {
+  @media(max-width: 480px) {
+    flex-direction: column;
+  }
+}
+
+.PayForm__modalCountriesListItem {
+
+}

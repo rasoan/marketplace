@@ -1,0 +1,108 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+    command: [ 'nginx-debug', '-g', 'daemon off;' ]
+    volumes:
+      - ./nginx/nginx-dev.conf:/etc/nginx/nginx.conf:ro
+      - ./templates:/etc/nginx/templates
+    # Не удалось опрокинуть в nginx.conf, но сюда будем дублировать для контроля
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+      - NEXT_PUBLIC_BACKEND_INTERNAL_PORT=8081
+      - PG_INTERNAL_PORT=5432
+      - FRONTEND_INTERNAL_PORT=3000
+#      - PALYCH_NOTIFICATION_POSTBACK_URL=${PALYCH_NOTIFICATION_POSTBACK_URL}
+    ports:
+      - "80:80"
+      - "443:443"
+
+  deshopfrontend:
+    #    image: deshopfrontend
+    container_name: deshopfrontend
+    restart: always
+    build:
+      context: ../deshopfrontend
+      dockerfile: ../deshopfrontend/Dockerfile-dev
+    volumes:
+      - ../deshopfrontend/src:/deshopfrontend/src
+      - ../deshopfrontend/public:/deshopfrontend/public
+      - ../detools:/detools
+    environment:
+      - NEXT_PUBLIC_BACKEND_HOST=http://localhost
+      - NEXT_PUBLIC_BACKEND_EXTERNAL_PORT=${NEXT_PUBLIC_BACKEND_EXTERNAL_PORT}
+      - NEXT_PUBLIC_BACKEND_API_NAME=${NEXT_PUBLIC_BACKEND_API_NAME}
+      - NEXT_PUBLIC_BACKEND_INTERNAL_PORT=${NEXT_PUBLIC_BACKEND_INTERNAL_PORT}
+    depends_on:
+      - deshopbackend
+    expose:
+      - "${FRONTEND_INTERNAL_PORT}"
+
+  deshopbackend:
+    #    image: deshopbackend
+    container_name: deshopbackend
+    restart: always
+    build:
+      context: ../deshopbackend
+      dockerfile: ../deshopbackend/Dockerfile-dev
+    develop:
+      watch:
+        - action: sync
+          path: ../deshopbackend/src
+          target: ./deshopbackend/src
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ../deshopbackend/package.json
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - NEXT_PUBLIC_BACKEND_HOST=http://localhost
+      - FRONTEND_HOST=http://localhost
+      - FRONTEND_HOST_STEAM=http://steam.localhost
+      - FRONTEND_HOST_ADMIN=http://admin.localhost
+    env_file:
+      - ./.env
+      - ./.env-secret
+    volumes:
+      - ../deshopfrontend:/deshopfrontend
+      - ../detools:/detools
+    expose:
+      - "${NEXT_PUBLIC_BACKEND_INTERNAL_PORT}"
+
+  pg_deshopbackend:
+    image: postgres:16.4
+    container_name: pg_deshopbackend
+    build: ../pg_deshopbackend
+    restart: always
+    env_file:
+      - ./.env
+      - ./.env-secret
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    expose:
+      - "${PG_INTERNAL_PORT}"
+
+  pg_admin_deshopbackend:
+    image: dpage/pgadmin4:8
+    container_name: pg_admin_deshopbackend
+    build: ../pg_admin_deshopbackend
+    depends_on:
+      - pg_deshopbackend
+    restart: always
+    env_file:
+      - ./.env
+      - ./.env-secret
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./config/servers.json:/pgadmin4/servers.json
+      - ./config/certs:/certs
+    expose:
+      - "${PG_ADMIN_INTERNAL_PORT}"
+
+volumes:
+  pgdata:
+  pgadmin_data:

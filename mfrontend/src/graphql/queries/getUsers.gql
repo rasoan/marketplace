@@ -1,0 +1,10 @@
+query GetUsersList {
+    getUsersList {
+        id
+        createdat
+        name
+        email
+        login
+        password
+    }
+}

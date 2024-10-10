@@ -1,0 +1,7 @@
+subscription topUpAccountPostbackNotificationEvent($eventId: String!) {
+    topUpAccountPostbackNotificationEvent(eventId: $eventId) {
+        eventId
+        message
+        isError
+    }
+}

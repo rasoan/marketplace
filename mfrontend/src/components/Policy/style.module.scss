@@ -1,0 +1,21 @@
+.Policy {
+  padding: 0 80px;
+  height: 100%;
+  flex-grow: 1;
+
+  &__container {
+    h1 {
+      text-align: center;
+    }
+    a {
+      color: #FF5C1D;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  &__containerTitle {
+
+  }
+}

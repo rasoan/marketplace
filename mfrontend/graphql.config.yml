@@ -1,0 +1,7 @@
+projects:
+  frontend:
+    schema: http://localhost/graphql
+    documents: /**/*.{graphql,js,ts,d.ts}
+  backend:
+    schema: ../deshopbackend/schema.graphql
+    documents: ../deshopbackend/**/*.graphql

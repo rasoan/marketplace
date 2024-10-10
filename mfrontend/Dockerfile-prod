@@ -1,0 +1,11 @@
+FROM node:18-alpine
+
+WORKDIR /deshopfrontend
+
+COPY . .
+
+RUN rm -rf .next
+
+RUN npm install -g pnpm && pnpm install
+
+CMD pnpm next build && pnpm next start

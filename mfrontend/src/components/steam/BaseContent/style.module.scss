@@ -1,0 +1,127 @@
+.Content {
+  background: transparent;
+  margin: 0 80px;
+  position: relative;
+  z-index: 2;
+  padding-top: 19px;
+  padding-bottom: 95px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  @media(max-width: 1280px) {
+    padding: 19px 20px 0 20px;
+    margin: 0;
+  }
+}
+.SteamSquareOne {
+  position: absolute;
+  top: 86px;
+  left: 135px;
+  border-radius: 12px 12px 0 12px;
+  width: 140px;
+  height: 69px;
+  filter: blur(4px);
+  background: #1e1042;
+  z-index: -1;
+
+  @media(max-width: 1280px) {
+    display: none;
+  }
+  &:before {
+    content: '';
+    pointer-events: none;
+    display: block;
+    border-radius: 0 12px 12px 12px;
+    width: 257px;
+    height: 166px;
+    background: #1e1042;
+    position: absolute;
+    top: 56px;
+    left: 58px;
+  }
+}
+
+.SteamSquareTwo {
+  position: absolute;
+  top: 82px;
+  right: 16px;
+  border-radius: 12px 12px 12px 0;
+  width: 76px;
+  height: 62px;
+  filter: blur(4px);
+  background: #381D7F;
+  z-index: -1;
+
+  @media(max-width: 1280px) {
+    display: none;
+  }
+  &:before {
+    content: '';
+    pointer-events: none;
+    display: block;
+    border-radius: 12px 0 12px 12px;
+    width: 76px;
+    height: 62px;
+    background: #381D7F;
+    position: absolute;
+    top: 54px;
+    right: 45px;
+  }
+}
+
+.SteamSquareThree {
+  position: absolute;
+  bottom: 16px;
+  left: 69px;
+  border-radius: 12px 0 12px 12px;
+  width: 76px;
+  height: 66px;
+  filter: blur(4px);
+  background: #381D7F;
+  z-index: -1;
+
+  @media(max-width: 1280px) {
+    display: none;
+  }
+  &:before {
+    content: '';
+    pointer-events: none;
+    display: block;
+    border-radius: 8px 8px 8px 0;
+    width: 35px;
+    height: 35px;
+    background: #381D7F;
+    position: absolute;
+    bottom: 60px;
+    left: 65px;
+  }
+}
+
+.SteamSquareFour {
+  position: absolute;
+  bottom: 150px;
+  right: 182px;
+  border-radius: 12px 12px 12px 0;
+  width: 106px;
+  height: 78px;
+  filter: blur(4px);
+  background: #4B26B1;
+  z-index: -1;
+
+  @media(max-width: 1280px) {
+    display: none;
+  }
+  &:before {
+    content: '';
+    pointer-events: none;
+    display: block;
+    border-radius: 12px 12px 12px 12px;
+    width: 214px;
+    height: 156px;
+    background: #4b26b1;
+    position: absolute;
+    top: 65px;
+    right: 59px;
+  }
+}

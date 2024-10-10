@@ -1,0 +1,30 @@
+.Logo {
+  a {
+    display: flex;
+    align-items: center;
+  }
+  &__icon, &__text {
+    margin: 0 2px !important;
+  }
+
+  &__icon {}
+  &__text {}
+}
+
+.isMobile {
+  display: none;
+  margin-top: 44px;
+  margin-bottom: 20px;
+
+  @media(max-width: 1280px) {
+    display: block;
+  }
+}
+
+.isDesktop {
+  display: flex;
+
+  @media(max-width: 1280px) {
+    display: none;
+  }
+}

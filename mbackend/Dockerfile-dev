@@ -1,0 +1,12 @@
+FROM node:20.14.0
+
+WORKDIR ./deshopbackend
+
+COPY package.json pnpm-lock.yaml ./
+
+RUN npm install -g pnpm && pnpm install
+
+COPY . .
+
+CMD pnpm start:nest
+

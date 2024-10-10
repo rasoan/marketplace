@@ -1,0 +1,11 @@
+FROM node:20.14.0
+
+WORKDIR ./deshopbackend
+
+COPY . .
+
+EXPOSE 8081
+
+RUN npm install -g pnpm && pnpm install
+
+CMD pnpm start:nest

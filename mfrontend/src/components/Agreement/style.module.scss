@@ -1,0 +1,24 @@
+.Agreement {
+  padding: 0 80px;
+  height: 100%;
+  flex-grow: 1;
+
+  &__container {
+    &Title {
+      text-align: center;
+    }
+    a {
+      color: #FF5C1D;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  &__containerTitle {
+
+  }
+  &__containerText {
+    text-align: left;
+  }
+}

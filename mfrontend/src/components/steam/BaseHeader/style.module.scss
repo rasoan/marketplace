@@ -1,0 +1,173 @@
+@import '../../../styles/variables';
+
+.Header {
+  padding: 0;
+  background: $gray900;
+  margin: $steamMarginHeaderFooter;
+  border-radius: 32px;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(47, 47, 47, 1);
+
+  @media(max-width: 1280px) {
+    margin: 0 20px;
+    padding: 12px 0;
+    height: 48px;
+  }
+}
+
+.headerContainer {
+  height: 100%;
+
+  &__textContainer {
+    margin: 0 12px;
+  }
+
+  &__logoContainer {}
+}
+
+.headerContainerTitle {}
+
+.logoContainer {
+  margin: 0 !important;
+
+  &__logo, &__text {
+    margin: 0 2px !important;
+  }
+
+  &__icon {}
+  &__text {}
+}
+
+.logoContainerIcon {}
+.logoContainerText {}
+
+.textContainer {
+  margin: 0 12px;
+
+  &__icon {
+    margin-right: 8px;
+  }
+
+  &__text {
+  }
+}
+
+.textContainerIcon {}
+.textContainerText {}
+
+.textContainerQuestionButton {
+  background: $gray850;
+  border-radius: 32px;
+  border: none;
+  min-height: 40px;
+  padding: 6px 8px;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(47, 47, 47, 1);
+
+  .fa {
+    font-size: 24px;
+  }
+}
+
+.textContainerQuestionIcon {
+  width: 28px;
+  height: 28px;
+  background: #FF5C1D;
+  border-radius: 50%;
+
+  &:hover {
+    background: #FF5C1D;
+  }
+}
+
+.textContainerQuestion {
+  &__text {}
+  &__questionIcon {
+
+  }
+  &__dropdown {
+    &Items {
+      backdrop-filter: blur(30px);
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.8);
+      padding: 20px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 311px;
+      margin-top: 24px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    &Item {
+      display: flex;
+    }
+    &ItemsKey {
+      color: #878787;
+      margin-right: 8px;
+    }
+  }
+  &__button {
+    &:hover {
+      .iconArrow {
+        color: #FF5C1D;
+        transform: rotate(180deg);
+      }
+    }
+    @media(max-width: 1280px) {
+      display: none;
+    }
+  }
+  .textContainerQuestion__buttonMobile {
+    all: unset;
+    display: none;
+
+    &:hover {
+      all: unset !important;
+      background: none;
+
+      .iconHover {
+        display: block;
+      }
+      .iconDefault {
+        display: none;
+      }
+    }
+    @media(max-width: 1280px) {
+      display: flex;
+      background: none;
+      margin: auto 0;
+
+      &:hover {
+        background: none;
+      }
+    }
+
+    .textContainerQuestionIcon {
+      background: none;
+    }
+    .iconHover {
+      cursor: pointer;
+      display: none;
+    }
+  }
+}
+
+.iconQues {
+  font-size: 20px;
+  color: #fff;
+}
+
+.iconArrow {
+  transition: all .3s;
+}
+
+.dropContent {
+  backdrop-filter: blur(30px);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.8);
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 311px;
+  top: 24px;
+}

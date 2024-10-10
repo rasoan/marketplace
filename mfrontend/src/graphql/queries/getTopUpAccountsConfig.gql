@@ -1,0 +1,19 @@
+query GetTopUpAccountConfig {
+    getTopUpAccountConfig {
+        amountForCurrenciesLimitsList {
+            currencyType
+            min
+            max
+        }
+        commissionRateInfo {
+            value
+            commissionRateLowersInfoForCurrencyTypesList {
+                currencyType
+                commissionRateLowersList {
+                    startAmount
+                    value
+                }
+            }
+        }
+    }
+}

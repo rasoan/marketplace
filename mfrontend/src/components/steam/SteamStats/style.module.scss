@@ -1,0 +1,32 @@
+.SteamStats {
+  position: absolute;
+  top: 17px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #C5C6CD;
+  max-width: 120px;
+  width: 100%;
+
+  @media(max-width: 1280px) {
+    order: 2;
+    position: relative;
+    width: 100%;
+    flex-direction: row;
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+    top: 0;
+    margin: 16px 0;
+    gap: 24px;
+  }
+  &__itemNum {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #fff;
+  }
+}

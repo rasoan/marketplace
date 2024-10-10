@@ -1,0 +1,86 @@
+.SteamRobot {
+  position: absolute;
+  bottom: 169px;
+  right: -80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  @media(max-width: 1280px) {
+    display: none;
+  }
+}
+.SteamRobotModel {
+  position: relative;
+  width: 325px;
+  height: 201px;
+  background: url("../../../../public/images/steam-robot.png") no-repeat 0 0;
+  cursor: pointer;
+  animation: shake 5s;
+  animation-iteration-count: infinite;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 325px;
+    height: 201px;
+    background: url("../../../../public/images/steam-robot-hover.png") no-repeat 0 0;
+    opacity: 0;
+    transition: all .3s;
+  }
+
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes shake {
+  0% { transform: translate(2px, -0.48px) rotate(0deg); }
+  5% { transform: translate(2px, -0.48px) rotate(-3deg); }
+  10% { transform: translate(2px, -0.48px) rotate(0deg); }
+  15% { transform: translate(2px, -0.48px) rotate(-3deg); }
+  20% { transform: translate(2px, -0.48px) rotate(0deg); }
+  25% { transform: translate(2px, -0.48px) rotate(-3deg); }
+  30% { transform: translate(2px, -0.48px) rotate(0deg); }
+  35% { transform: translate(2px, -0.48px) rotate(-3deg); }
+  40% { transform: translate(2px, -0.48px) rotate(0deg); }
+  45% { transform: translate(2px, -0.48px) rotate(-3deg); }
+  50% { transform: translate(2px, -0.48px) rotate(0deg); }
+  100% { transform: translate(2px, -0.48px) rotate(0deg); }
+}
+
+.SteamRobotMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  margin-right: 142px;
+  position: relative;
+  max-width: 227px;
+  font-size: 12px;
+  top: 15px;
+
+  &>:last-child {
+    border-radius: 12px 0 12px 12px;
+
+    &:before {
+      border-radius: 12px 0 12px 12px;
+    }
+  }
+  &>:first-child {
+    border-radius: 12px 0 12px 12px;
+  }
+}
+
+.SteamRobotMessageItem {
+  backdrop-filter: blur(30px);
+  border-radius: 12px 12px 0 12px;
+  padding: 8px;
+  font-size: 12px;
+  box-shadow: inset 0 0 0 1px rgba(47, 47, 47, 1);
+}
